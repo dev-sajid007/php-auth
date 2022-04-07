@@ -1,1 +1,2 @@
-# php-auth Project
+# PHP Login | Registration System
+# Use PDO
