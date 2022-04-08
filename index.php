@@ -1,5 +1,7 @@
 <?php
-  include 'inc/Header.php'
+  include 'inc/Header.php';
+  include 'lib/User.php';
+  $user = new User();
 ?>
 
     <div class="card mt-3">
