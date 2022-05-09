@@ -9,6 +9,7 @@
       $userReg = $user->userRegistration($_POST);
       // print_r($_POST);
   }
+  Session::checkLogin();
 ?>
 
     <div class="card mt-3">

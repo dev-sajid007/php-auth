@@ -1,8 +1,16 @@
 <?php
   $filePath = realpath(dirname(__FILE__));
-  include_once $filePath.'/../lib/Session.php';
+  include_once $filePath . '/../lib/Session.php';
   Session::init();
 ?>
+
+<?php
+  if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    Session::destroy();
+  }
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -15,6 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <title>Login Register</title>
 </head>
+
 <body>
   <div class="container">
     <div class="nav-bar">
@@ -25,18 +34,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
+
+            <?php
+              $id = Session::get("id");
+              $userLogin = Session::get("login");
+              if($userLogin == true) {
+            ?>
             <li class="nav-item active">
-              <a class="nav-link" href="profile.php">Profile</a>
+              <a class="nav-link" href="profile.php?id=<?=$id?>">Profile</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Logout</a>
+              <a class="nav-link" href="?action=logout">Logout</a>
             </li>
+            <?php } else {?>
             <li class="nav-item active">
               <a class="nav-link" href="login.php">Login</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="register.php">Register</a>
             </li>
+            <?php } ?>
           </ul>
         </div>
       </nav>

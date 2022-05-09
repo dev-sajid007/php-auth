@@ -10,7 +10,7 @@
     echo $loginMsg;
   }
   Session::set('loginMsg',NULL);
- 
+  Session::checkSession();
 ?>
 
 <div class="card mt-3">
