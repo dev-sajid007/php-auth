@@ -102,4 +102,12 @@ class User
             return $msg;
         }
     }
+
+
+    public function getUser(){
+        $sql = "SELECT * FROM tbl_user";
+        $query = $this->db->pdo->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

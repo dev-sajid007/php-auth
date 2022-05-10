@@ -39,15 +39,30 @@
         </tr>
       </thead>
       <tbody>
+      <?php
+        $user = new User();
+        $userData = $user->getUser();
+
+        if($userData) {
+          $i = 0;
+          foreach($userData as $data){
+            $i++;
+      ?>  
         <tr>
-          <td>01</td>
-          <td>01</td>
-          <td>01</td>
-          <td>01</td>
+          <td><?= $i?></td>
+          <td><?= $data['name']?></td>
+          <td><?= $data['username']?></td>
+          <td><?= $data['email']?></td>
           <td>
-            <a href="" class="btn btn-info">View</a>
+            <a href="profile.php?id=<?=$data['id']?>" class="btn btn-info">View</a>
+            <a href="" class="btn btn-danger">delete</a>
           </td>
         </tr>
+      <?php
+        }} else {
+      ?>
+      <tr><td>No User Found</td></tr>
+      <?php } ?>  
       </tbody>
     </table>
   </div>
