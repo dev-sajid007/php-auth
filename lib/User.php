@@ -110,4 +110,12 @@ class User
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getUserById($id){
+        $sql = "SELECT * FROM tbl_user WHERE id = :id LIMIT 1";
+        $query = $this->db->pdo->prepare($sql);
+        $query->bindValue(':id',$id);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_OBJ); 
+    }
 }
